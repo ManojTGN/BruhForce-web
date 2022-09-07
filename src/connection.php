@@ -5,6 +5,6 @@ if(!isset($_SESSION)){
 }
 
 //Connection To Database And Page Title
-$con = mysqli_connect("localhost","root","","<database_name>") or die("connection error");
+$con = mysqli_connect("localhost","root","","mam") or die("connection error");
 $title="BRUH FORCE";
 ?>
