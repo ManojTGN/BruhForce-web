@@ -1,12 +1,55 @@
+<?php  
+include("connection.php");
+
+//To Alert If The Entered Data Is Wrong
+$alert_wrong = false;
+
+//Login Post Method
+if(isset($_POST['login'])){
+
+    //Getting The Email And Password
+    $email=$_POST["email"];
+    $password=$_POST["password"];
+    
+    //Getting The Data From The Database
+    $query="SELECT * FROM `register` WHERE `email`='$email' and `password`='$password'";
+    $qry=mysqli_query($con,$query)or die(mysqli_error($con));
+
+    //Checking If The Result Is More Than 0
+    if(mysqli_num_rows($qry)>0){ 
+        
+        if($row=mysqli_fetch_array($qry)){
+            $_SESSION['userid']=$row['id'];
+            $_SESSION['email']=$row['email'];
+            $_SESSION['name']=$row['name'];
+            $_SESSION['image']=$row['profile'];
+            $_SESSION['gid']=$row['gadgetsid'];
+            $_SESSION['address']=$row['address'];
+            $_SESSION['signed-in'] = true;
+            header("Location: dashboard.php");
+        }
+    
+    }
+
+    //Setting The Failed Alert To 1b.
+    $alert_wrong = true;
+
+}   
+
+?>
+
 <html>
     <head>
         <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     </head>
     <body>
-        <div class="container-fluid">               
+        <div style="background-color: #393E46;height:100%;"class="container-fluid">
+            
+        </div>
+        <div class="container-fluid" style="position:absolute;top:0;left:0;">               
             <div class="row">
-                <div class="col-4">col-4z</div>
+                <div class="col-4"></div>
                 <div class="col-8">
                     <div class="container text-center">
                         <div class="row">
