@@ -377,7 +377,7 @@ if(isset($_POST["deleteAccount"])){
                                     </div>
                                     <div class="tab-pane fade" id="v-pills-payments" role="tabpanel" aria-labelledby="v-pills-payments-tab" tabindex="0">
                                         <h4>PAYMENT MANAGEMENT</h4>
-                                        <h6 class="card-subtitle mb-2 text-muted">View your payment activity and the current balance of your BruhForce account.</h6><br>
+                                        <h6 class="card-subtitle mb-2 text-muted">View your payment activity and the payment made in your BruhForce Account! Note That The transactions are only available after 6 hours.</h6><br>
                                         <h6 class="card-subtitle mb-2 text-muted"><b style="color:black;">YOUR PAYMENT METHODS</b></h6>
                                         <h6 class="card-subtitle mb-2 text-muted">Add or manage payment methods associated with your BruhForce Account.</h6>
                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPayment">
