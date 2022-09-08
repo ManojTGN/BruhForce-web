@@ -1,13 +1,14 @@
-<?php  header("Location: dashboard.php"); ?>
+<?php  
+include("connection.php");
+if(!isset($_SESSION['signed-in'])){header("Location: sign-in.php");}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>SENSELUTO - SOIL SENSING SYSTEM BY NANDHA INFOTECH</title>
-        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     </head>
     <body>
-        <div class="alert alert-info no-m" role="alert">
-            You Will Be Redirected To The Dashboard In A While!.. If Not <a href="dashboard.php">Click Me</a>
-        </div>                  
+
     </body>
 </html>
