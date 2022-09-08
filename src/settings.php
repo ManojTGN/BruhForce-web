@@ -20,7 +20,7 @@ if(isset($_POST['changeUsername'])){
         $_SESSION['username'] = $username;
     }
 
-    header("Location: profile.php");
+    header("Location: settings.php");
 }
 
 if(isset($_POST['changeEmail'])){
@@ -32,7 +32,7 @@ if(isset($_POST['changeEmail'])){
         $_SESSION['email'] = $email;
     }
 
-    header("Location: profile.php");
+    header("Location: settings.php");
 }
 
 if(isset($_POST['addAddress'])){
@@ -46,7 +46,7 @@ if(isset($_POST['addAddress'])){
         mysqli_query($con,"INSERT INTO `address`(`USER ID`, `ADDRESS 1`, `ADDRESS 2`, `CITY`, `REGION`, `POSTAL`) VALUES ('$userid','$address1','$address2','$city','$region','$postal')")or die(mysqli_error($con));
     }
 
-    header("Location: profile.php");
+    header("Location: settings.php");
 }
 
 if(isset($_POST['editAddress'])){
@@ -58,14 +58,14 @@ if(isset($_POST['editAddress'])){
     $postal = $_POST["postal"];
     mysqli_query($con,"UPDATE `address` SET `ADDRESS 1` = '$address1', `ADDRESS 2` = '$address2', `CITY` = '$city', `REGION` = '$region', `POSTAL`=$postal WHERE `S NO`=$addressid;");
 
-    header("Location: profile.php");
+    header("Location: settings.php");
 }
 
 if(isset($_POST['deleteAddress'])){
     $addressid = $_POST["addressid"];
     mysqli_query($con,"DELETE FROM `address` WHERE `USER ID`=$userid AND `S NO`=$addressid;");
     
-    header("Location: profile.php");
+    header("Location: settings.php");
 }
 
 if(isset($_POST['changePassword'])){
@@ -79,7 +79,7 @@ if(isset($_POST['changePassword'])){
     if(($confirmPassword == $newPassword) && $password==$currentPassword){
         mysqli_query($con,"UPDATE `user` SET `PASSWORD` = '$newPassword' WHERE `USER ID`=$userid");
     }
-    header("Location: profile.php");
+    header("Location: settings.php");
 }
 
 if(isset($_POST["deleteAccount"])){
@@ -93,7 +93,7 @@ if(isset($_POST["deleteAccount"])){
         
         header("Location: sign-out.php");
     }
-    header("Location: profile.php");
+    header("Location: settings.php");
 }
 ?>
 
