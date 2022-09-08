@@ -49,12 +49,12 @@ if(isset($_POST['login'])){
                 <h5 class="card-title">Sign In</h5><br>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">Username</span>
-                        <input name="email" value="manoj.ig20@bitsathy.ac.in" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                        <input name="email" value="medhunraj1307@gmail.com" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
                     </div>
                     <br>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">password</span>
-                        <input name="password" value="manojtgn" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping">
+                        <input name="password" value="123456" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping">
                     </div>
                     <br>
                     <br>
