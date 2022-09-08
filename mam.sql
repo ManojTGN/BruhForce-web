@@ -13,10 +13,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cart` (
   `SNO` int(11) NOT NULL,
+  `CART_ID` int(11) NOT NULL,
   `USER ID` int(11) NOT NULL,
   `DISH_ID` int(11) NOT NULL,
   `REST_ID` int(11) NOT NULL,
-  `QUANTITY` int(11) NOT NULL
+  `QUANTITY` int(11) NOT NULL,
+  `PRICE` int(11) NOT NULL,
+  `ORDERED` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `dishes` (
@@ -76,6 +79,14 @@ CREATE TABLE `address` (
   `REGION` varchar(15) NOT NULL,
   `POSTAL` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `order` (
+  `SNO` int(11) NOT NULL,
+  `ORDER_ID` int(11) NOT NULL,
+  `CART_ID` int(11) NOT NULL,
+  `USER_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 INSERT INTO `address` (`S NO`, `USER ID`, `ADDRESS 1`, `ADDRESS 2`, `CITY`, `REGION`, `POSTAL`) VALUES
 (15, 0, '98/22, Hospital Colony', 'MetturDam', 'Salem', 'INDIA', 636401);
