@@ -10,6 +10,23 @@ $query = mysqli_query($con,"select `USER_ID` from `order` where `USER_ID`=$useri
 $OrderCount = mysqli_num_rows($query);
 ?>
 
+<?php
+if(isset($_POST["cancelDelivery"])){
+    $orderid = $_POST["orderid"];
+    $cartid = mysqli_fetch_array(mysqli_query($con,"SELECT `CART_ID` FROM `ORDER` WHERE `ORDER_ID`=$orderid AND `USER_ID`=$userid;"))[0];
+    mysqli_query($con,"DELETE FROM `cart` WHERE `CART_ID`=$cartid AND `USER ID`=$userid AND `ORDERED`=1;")or die(mysqli_error($con));
+    mysqli_query($con,"DELETE FROM `order` WHERE `ORDER_ID`=$orderid AND `USER_ID`=$userid;")or die(mysqli_error($con));
+   
+    header("Location: order.php");
+}
+
+if(isset($_POST["makeDelivered"])){
+    $orderid = $_POST["orderid"];
+
+    header("Location: order.php");
+}
+?>
+
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -24,7 +41,8 @@ $OrderCount = mysqli_num_rows($query);
                 <div class="card-body">
                     <h5 class="card-title">Your Orders</h5><hr>
                     <?php if($OrderCount <= 0){?>
-                        <h3 class="text-muted">You Havent Ordered Anything yet</h3>
+                        <h3 class="text-center text-muted"><i class="fa-solid fa-truck-fast" style="font-size:50px;"></i></h3>
+                        <h3 class="text-muted text-center">You Haven't Ordered Anything yet</h3>
                     <?php 
                     }else{
                     $orderBoxIndex = 0;
@@ -108,8 +126,11 @@ $OrderCount = mysqli_num_rows($query);
                                 </div>
                                 </div>
                             </div><br>
-                        <button class="btn btn-danger">Cancel Order</button>
-                        <button class="btn btn-link">Delivered (beta)</button>
+                            <form method="POST">
+                                <button class="btn btn-danger" type="submit" name="cancelDelivery">Cancel Order</button>
+                                <button class="btn btn-link" type="submit" name="makeDelivered">Delivered (beta)</button>
+                                <input name="orderid" value="<?php echo $orderid;?>" style="visibility:hidden;"/>
+                            </form>
                         </div>
                     </div><br>
                     <?php }}?>

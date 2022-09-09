@@ -133,8 +133,8 @@ if(isset($_POST["removeItem"])){
                                     if($CartCount <= 0){
                                 ?>
                                 <div class="row">
-                                    <div class="col"><h6 class="card-subtitle mb-2 text-center"><i class="fa-solid fa-cart-shopping text-muted" style="font-size:30px;"></i></h6></div>
-                                    <div class="col"><h6 class="card-subtitle mb-2 text-muted">Empty Cart!</h6></div>
+                                    <div class="col"><h6 class="card-subtitle mb-2 text-muted text-end">Empty</h6></div>
+                                    <div class="col"><h6 class="card-subtitle mb-2 text-muted text-start">Cart</h6></div>
                                 </div>
                                 <?php }?>
                                 <?php
@@ -169,8 +169,8 @@ if(isset($_POST["removeItem"])){
                                 <h6 class="card-subtitle mb-2"><?php echo $dish_price*$dish_quantity;?></h6>
                                 <?php }?>
                             </div>
-                        </div>
-                        <br><div style="width:100%;border:1px solid black;border-style:dashed;"></div><br>
+                        </div><div style="margin-top:20px;"></div>
+                        <div style="width:100%;border:1px solid black;border-style:dashed;"></div><br>
                         <div class="row">
                             <div class="col-8">
                                 <h6 class="card-subtitle mb-2">Total:</h6>
