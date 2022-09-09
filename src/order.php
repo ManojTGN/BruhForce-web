@@ -5,6 +5,7 @@ if(!isset($_SESSION['signed-in'])){header("Location: sign-in.php");}
 
 <?php
 $userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
 $query = mysqli_query($con,"select `USER_ID` from `order` where `USER_ID`=$userid;")or die(mysqli_error($con));
 $OrderCount = mysqli_num_rows($query);
 ?>
@@ -16,6 +17,7 @@ $OrderCount = mysqli_num_rows($query);
         <script src="https://kit.fontawesome.com/08c3f952c9.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <?php include("header.php");?>
         <div class="container-fluid">
             
             <div class="card mx-auto" style="width:50%;margin-top:20px;">
@@ -25,31 +27,28 @@ $OrderCount = mysqli_num_rows($query);
                         <h3 class="text-muted">You Havent Ordered Anything yet</h3>
                     <?php 
                     }else{
-                    $query = mysqli_query($con,"select * from `order` where `USER_ID`='$userid'")or die(mysqli_error($con));
-                    while($order=mysqli_fetch_array($query)){
+                    $orderBoxIndex = 0;
+                    $Orderquery = mysqli_query($con,"select * from `order` where `USER_ID`='$userid'")or die(mysqli_error($con));
+                    while($order=mysqli_fetch_array($Orderquery)){
+                        $orderBoxIndex++;
                         $orderid = $order["ORDER_ID"];
                         $track = $order["TRACK"];
                         $now = $order["NOW"];
 
-                        if($track == 0){
-                            $track = 0 + $now;
-                        }else if($track == 1){
-                            $track = 50 + $now;
-                        }else if($track == 2){
-                            $track = 100;
-                        }else{
-                            $track = 0;
-                        }
+                        if($track == 0){$track = 0 + $now;}
+                        else if($track == 1){$track = 50 + $now;}
+                        else if($track == 2){$track = 100;}
+                        else{$track = 0;}
                     ?>
                     <div class="card">
-                        <div class="card-header" <?php if($track >= 100){?>style="color:green;"<?php }?>> <b><?php if($track >= 100){?><i class="fa-solid fa-circle-check"></i><?php }?>Order (<code><?php echo $orderid;?></code>)</b></div>
+                        <div class="card-header" <?php if($track >= 100){?>style="color:green;"<?php }?>> <b><?php if($track >= 100){?><i class="fa-solid fa-circle-check"></i><?php }?> Order <span class="badge text-bg-<?php if($track >= 100){?>success<?php }else{?>primary<?php }?>"><?php echo $orderBoxIndex;?></span></b></div>
                         <div class="card-body">
-                        <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion" >
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="panelsStayOpen-trackOrder">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">Track Order</button>
+                                <h2 class="accordion-header collapse" id="trackOrder<?php echo $orderBoxIndex;?>">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#trackOrder<?php echo $orderBoxIndex;?>" aria-expanded="true" aria-controls="trackOrder<?php echo $orderBoxIndex;?>">Track Order</button>
                                 </h2>
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-trackOrder">
+                                <div id="trackOrder<?php echo $orderBoxIndex;?>" class="accordion-collapse collapse show" aria-labelledby="trackOrder<?php echo $orderBoxIndex;?>">
                                 <div class="accordion-body">
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-label="Default striped example" style="width: <?php echo $track;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
@@ -63,10 +62,10 @@ $OrderCount = mysqli_num_rows($query);
                                 </div>
                             </div>
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="panelsStayOpen-allDishes">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">Order</button>
+                                <h2 class="accordion-header<?php echo $orderBoxIndex;?>">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo<?php echo $orderBoxIndex;?>" aria-expanded="false" aria-controls="collapseTwo<?php echo $orderBoxIndex;?>">Order</button>
                                 </h2>
-                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-allDishes">
+                                <div id="collapseTwo<?php echo $orderBoxIndex;?>" class="accordion-collapse collapse" aria-labelledby="allDishes">
                                 <div class="accordion-body">
                                     <table class="table">
                                         <thead>
@@ -81,7 +80,7 @@ $OrderCount = mysqli_num_rows($query);
                                             <?php 
                                                 $index = 1;
                                                 $totalprice = 0;
-                                                $cartid = mysqli_fetch_array(mysqli_query($con,"select `CART_ID` from `order` where `USER_ID`='$userid'"))[0];
+                                                $cartid = $order["CART_ID"];
                                                 $query = mysqli_query($con,"SELECT * FROM `cart` WHERE `USER ID`='$userid' AND `ORDERED`=1 AND `CART_ID`=$cartid")or die(mysqli_error($con));
                                                 while($cart=mysqli_fetch_array($query)){
                                                     $dishid = $cart["DISH_ID"];
@@ -112,7 +111,7 @@ $OrderCount = mysqli_num_rows($query);
                         <button class="btn btn-danger">Cancel Order</button>
                         <button class="btn btn-link">Delivered (beta)</button>
                         </div>
-                    </div>
+                    </div><br>
                     <?php }}?>
                 </div>
             </div>

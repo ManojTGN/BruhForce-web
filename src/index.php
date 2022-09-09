@@ -4,6 +4,11 @@ if(!isset($_SESSION['signed-in'])){header("Location: sign-in.php");}
 ?>
 
 <?php
+$userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
+?>
+
+<?php
 $choosedAccount = -1;
 if(isset($_POST["chooseAccount"])){
     $choosedAccount = 0;
@@ -20,6 +25,7 @@ if(isset($_POST["chooseAccount"])){
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     </head>
     <body>
+        <?php include("header.php");?>
         <div class="modal fade" id="Chooseprofile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ChooseprofileLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">

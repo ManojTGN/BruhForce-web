@@ -5,6 +5,7 @@ if(!isset($_SESSION['signed-in'])){header("Location: sign-in.php");}
 
 <?php
 $userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
 $query = mysqli_query($con,"select `USER ID` from cart where `USER ID`='$userid' AND `ORDERED`=false")or die(mysqli_error($con));
 $CartCount = mysqli_num_rows($query);
 ?>
@@ -12,7 +13,7 @@ $CartCount = mysqli_num_rows($query);
 <?php
 if(isset($_POST["proceed"])){
     if($CartCount > 0){
-        $cartid = mysqli_fetch_array(mysqli_query($con,"SELECT `CART_ID` from cart WHERE`USER ID`=$userid;"))[0];
+        $cartid = $_POST["cartid"];
         mysqli_query($con,"UPDATE cart SET `ORDERED`=1 WHERE`USER ID`=$userid;");
         mysqli_query($con,"INSERT INTO `order`(`USER_ID`, `CART_ID`, `NOW`) VALUES ($userid,$cartid,1)")or die(mysqli_error($con));
         header("Location: order.php");
@@ -57,7 +58,7 @@ if(isset($_POST["removeItem"])){
     </head>
 
     <body>
-
+        <?php include("header.php");?>
         <div class="container-fluid">
 
         <div class="card mx-auto" style="width:50%;margin-top:20px;">
@@ -138,7 +139,7 @@ if(isset($_POST["removeItem"])){
                                 <?php }?>
                                 <?php
                                     $total_price = 0;
-                                    $query = mysqli_query($con,"select * from cart where `USER ID`='$userid' AND `ORDERED`=false")or die(mysqli_error($con));
+                                    $query = mysqli_query($con,"select * from cart where `USER ID`='$userid' AND `ORDERED`=0")or die(mysqli_error($con));
                                     while($cart=mysqli_fetch_array($query)){
                                         $dish_id = $cart['DISH_ID'];
                                         $dish_quantity = $cart['QUANTITY'];
@@ -159,7 +160,7 @@ if(isset($_POST["removeItem"])){
                                 <h6 class="card-subtitle mb-2">0</h6>
                                 <?php }?>
                                 <?php
-                                    $query = mysqli_query($con,"select * from cart where `USER ID`='$userid' AND `ORDERED`=false")or die(mysqli_error($con));
+                                    $query = mysqli_query($con,"select * from cart where `USER ID`='$userid' AND `ORDERED`=0")or die(mysqli_error($con));
                                     while($cart=mysqli_fetch_array($query)){
                                         $dish_price = $cart['PRICE'];
                                         $dish_quantity = $cart['QUANTITY'];
@@ -179,7 +180,13 @@ if(isset($_POST["removeItem"])){
                             </div>
                         </div><br>
                         <form method="POST">
-                        <button class="btn btn-primary w-100" name="proceed">Proceed</button>
+                            <?php 
+                                $query = mysqli_fetch_array(mysqli_query($con,"select `CART_ID` from cart where `USER ID`='$userid' AND `ORDERED`=0"));
+                                if(isset($query["CART_ID"])){$cartid = $query["CART_ID"];}
+                                else{ $cartid = -1;}
+                            ?>
+                            <input value="<?php echo $cartid?>" name="cartid" style="visibility:hidden;"/>
+                            <button class="btn btn-primary w-100" name="proceed" <?php if($CartCount <= 0){ echo "disabled"; }?>>Proceed</button>
                         </form>
                     </div>
                 </div>

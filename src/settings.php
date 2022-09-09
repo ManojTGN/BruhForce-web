@@ -5,6 +5,7 @@ if(!isset($_SESSION['signed-in'])){header("Location: sign-in.php");}
 
 <?php
 $userid = $_SESSION['userid'];
+$username = $_SESSION['username'];
 $query = mysqli_query($con,"select `USER ID` from address where `USER ID`='$userid'")or die(mysqli_error($con));
 $addressCount = mysqli_num_rows($query);
 ?>
@@ -104,8 +105,9 @@ if(isset($_POST["deleteAccount"])){
         <script src="https://kit.fontawesome.com/08c3f952c9.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <?php include("header.php");?>
         <div class="container-fluid h-100 square-box d-flex justify-content-center align-items-center">
-
+                
                 <div class="card w-50 mx-auto">
                     <div class="card-body">
                         <h3 class="card-title"><i class="fa-solid fa-gear"></i> Settings</h3><hr>
