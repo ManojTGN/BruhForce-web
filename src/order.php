@@ -11,6 +11,14 @@ $OrderCount = mysqli_num_rows($query);
 ?>
 
 <?php
+if(isset($_POST["removeOrder"])){
+    $orderid = $_POST["orderid"];
+    $cartid = mysqli_fetch_array(mysqli_query($con,"SELECT `CART_ID` FROM `ORDER` WHERE `ORDER_ID`=$orderid AND `USER_ID`=$userid;"))[0];
+    mysqli_query($con,"DELETE FROM `cart` WHERE `CART_ID`=$cartid AND `USER ID`=$userid AND `ORDERED`=1;")or die(mysqli_error($con));
+    mysqli_query($con,"DELETE FROM `order` WHERE `ORDER_ID`=$orderid AND `USER_ID`=$userid;")or die(mysqli_error($con));
+    header("Location: order.php");
+}
+
 if(isset($_POST["cancelDelivery"])){
     $orderid = $_POST["orderid"];
     $cartid = mysqli_fetch_array(mysqli_query($con,"SELECT `CART_ID` FROM `ORDER` WHERE `ORDER_ID`=$orderid AND `USER_ID`=$userid;"))[0];
@@ -22,7 +30,7 @@ if(isset($_POST["cancelDelivery"])){
 
 if(isset($_POST["makeDelivered"])){
     $orderid = $_POST["orderid"];
-
+    mysqli_query($con,"UPDATE `order` SET `NOW`=0, `TRACK`=2 WHERE`USER_ID`=$userid AND `ORDER_ID`=$orderid;");
     header("Location: order.php");
 }
 ?>
@@ -126,11 +134,20 @@ if(isset($_POST["makeDelivered"])){
                                 </div>
                                 </div>
                             </div><br>
+                            <?php 
+                                if($track != 100){
+                            ?>
                             <form method="POST">
-                                <button style="background:#00ADB5;border-color:#00ADB5" class="btn btn-danger" type="submit" name="cancelDelivery">Cancel Order</button>
+                                <button style="background:#00ADB5;border-color:#00ADB5" class="btn" type="submit" name="cancelDelivery">Cancel Order</button>
                                 <button style="color:00ADB5" class="btn btn-link" type="submit" name="makeDelivered">Delivered (beta)</button>
                                 <input name="orderid" value="<?php echo $orderid;?>" style="visibility:hidden;"/>
                             </form>
+                            <?php }else{?>
+                            <form method="POST">
+                                <button style="background:#00ADB5;border-color:#00ADB5" class="btn" type="submit" name="removeOrder">Done</button>
+                                <input name="orderid" value="<?php echo $orderid;?>" style="visibility:hidden;"/>
+                            </form>
+                            <?php }?>
                         </div>
                     </div><br>
                     <?php }}?>
