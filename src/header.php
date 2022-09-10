@@ -10,6 +10,9 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="index.php">Home</a></li>
+                    <?php if(basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING'])=="index.php"){?>
+                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#Chooseprofile">Change UserType</a></li>
+                    <?php }?>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="sign-out.php">Sign Out</a></li>
                 </ul>
