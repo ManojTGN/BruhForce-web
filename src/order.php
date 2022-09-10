@@ -33,13 +33,13 @@ if(isset($_POST["makeDelivered"])){
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/08c3f952c9.js" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body style="background:#00ADB5">
         <?php include("header.php");?>
         <div class="container-fluid">
             
-            <div class="card mx-auto" style="width:50%;margin-top:20px;">
+            <div class="card mx-auto" style="width:50%;margin-top:20px;background:#393E46;">
                 <div class="card-body">
-                    <h5 class="card-title">Your Orders</h5><hr>
+                    <h5 style="color:white;" class="card-title">Your Orders</h5><hr>
                     <?php if($OrderCount <= 0){?>
                         <h3 class="text-center text-muted"><i class="fa-solid fa-truck-fast" style="font-size:50px;"></i></h3>
                         <h3 class="text-muted text-center">You Haven't Ordered Anything yet</h3>
@@ -59,7 +59,7 @@ if(isset($_POST["makeDelivered"])){
                         else{$track = 0;}
                     ?>
                     <div class="card">
-                        <div class="card-header" <?php if($track >= 100){?>style="color:green;"<?php }?>> <b><?php if($track >= 100){?><i class="fa-solid fa-circle-check"></i><?php }?> Order <span class="badge text-bg-<?php if($track >= 100){?>success<?php }else{?>primary<?php }?>"><?php echo $orderBoxIndex;?></span></b></div>
+                        <div class="card-header" <?php if($track >= 100){?>style="color:00ADB5;"<?php }?>> <b><?php if($track >= 100){?><i class="fa-solid fa-circle-check"></i><?php }?> Order <span style="background:<?php if($track >= 100){?>#00ADB5<?php }else{?>#393E46<?php }?>;" class="badge"><?php echo $orderBoxIndex;?></span></b></div>
                         <div class="card-body">
                         <div class="accordion" >
                             <div class="accordion-item">
@@ -69,12 +69,12 @@ if(isset($_POST["makeDelivered"])){
                                 <div id="trackOrder<?php echo $orderBoxIndex;?>" class="accordion-collapse collapse show" aria-labelledby="trackOrder<?php echo $orderBoxIndex;?>">
                                 <div class="accordion-body">
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-label="Default striped example" style="width: <?php echo $track;?>%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar progress-bar-striped" role="progressbar" aria-label="Default striped example" style="width: <?php echo $track;?>%;background-color:#00ADB5;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <div class="row">
-                                        <div class="col text-start" <?php if($track > 0){?>style="color:green;"<?php }?>><b><?php if($track > 0){?><i class="fa-solid fa-circle-check"></i><?php }?>Order</b></div>
-                                        <div class="col text-center"<?php if($track >= 50){?>style="color:green;"<?php }?>><b><?php if($track >= 50){?><i class="fa-solid fa-circle-check"></i><?php }?>Restaurant</b></div>
-                                        <div class="col text-end"  <?php if($track >= 100){?>style="color:green;"<?php }?>><b><?php if($track >= 100){?><i class="fa-solid fa-circle-check"></i><?php }?>Delivered</b></div>
+                                        <div class="col text-start" <?php if($track > 0){?>style="color:00ADB5;"<?php }?>><b><?php if($track > 0){?><i class="fa-solid fa-circle-check"></i><?php }?>Order</b></div>
+                                        <div class="col text-center"<?php if($track >= 50){?>style="color:00ADB5;"<?php }?>><b><?php if($track >= 50){?><i class="fa-solid fa-circle-check"></i><?php }?>Restaurant</b></div>
+                                        <div class="col text-end"  <?php if($track >= 100){?>style="color:00ADB5;"<?php }?>><b><?php if($track >= 100){?><i class="fa-solid fa-circle-check"></i><?php }?>Delivered</b></div>
                                     </div>
                                 </div>
                                 </div>
@@ -127,8 +127,8 @@ if(isset($_POST["makeDelivered"])){
                                 </div>
                             </div><br>
                             <form method="POST">
-                                <button class="btn btn-danger" type="submit" name="cancelDelivery">Cancel Order</button>
-                                <button class="btn btn-link" type="submit" name="makeDelivered">Delivered (beta)</button>
+                                <button style="background:#00ADB5;border-color:#00ADB5" class="btn btn-danger" type="submit" name="cancelDelivery">Cancel Order</button>
+                                <button style="color:00ADB5" class="btn btn-link" type="submit" name="makeDelivered">Delivered (beta)</button>
                                 <input name="orderid" value="<?php echo $orderid;?>" style="visibility:hidden;"/>
                             </form>
                         </div>

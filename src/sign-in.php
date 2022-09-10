@@ -60,7 +60,7 @@ if(isset($_POST['login'])){
                     <br>
                     <div style="text-align: left;">
                         <button style="background:#00ADB5;border-color:#00ADB5" type="submit" name="login" class="btn btn-primary" >Sign in</button>
-                        <button style="color:#00ADB5;"type="submit" class="btn btn-link">Sign up</button>
+                        <a href="sign-up.php"><button style="color:#00ADB5;"type="button" class="btn btn-link">Sign up</button></a>
                     </div>
                 </div>
             </div>
