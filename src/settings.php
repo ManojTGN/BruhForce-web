@@ -104,27 +104,27 @@ if(isset($_POST["deleteAccount"])){
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/08c3f952c9.js" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body style="background:#00ADB5">
         <?php include("header.php");?>
-        <div class="container-fluid h-100 square-box d-flex justify-content-center align-items-center">
+        <div style="background:#00ADB5" class="container-fluid h-100 square-box d-flex justify-content-center align-items-center">
                 
-                <div class="card w-50 mx-auto">
+                <div class="card w-50 mx-auto" style="background:#393E46;">
                     <div class="card-body">
-                        <h3 class="card-title"><i class="fa-solid fa-gear"></i> Settings</h3><hr>
+                        <h3 style="color:white;"class="card-title"><i class="fa-solid fa-gear"></i> Settings</h3><hr>
                         <div class="card-body">
                             <div class="d-flex align-items-start">
                                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <button class="nav-link active" id="v-pills-general-tab" data-bs-toggle="pill" data-bs-target="#v-pills-general" type="button" role="tab" aria-controls="v-pills-general" aria-selected="true">General</button>
-                                    <button class="nav-link" id="v-pills-password-tab" data-bs-toggle="pill" data-bs-target="#v-pills-password" type="button" role="tab" aria-controls="v-pills-password" aria-selected="false">Password & Security</button>
-                                    <button class="nav-link" id="v-pills-payments-tab" data-bs-toggle="pill" data-bs-target="#v-pills-payments" type="button" role="tab" aria-controls="v-pills-payments" aria-selected="false">Payment & Transactions</button>
+                                    <button style="background:#00ADB5;color:white" class="nav-link active" id="v-pills-general-tab" data-bs-toggle="pill" data-bs-target="#v-pills-general" type="button" role="tab" aria-controls="v-pills-general" aria-selected="true">General</button><br>
+                                    <button style="background:#00ADB5;color:white" class="nav-link" id="v-pills-password-tab" data-bs-toggle="pill" data-bs-target="#v-pills-password" type="button" role="tab" aria-controls="v-pills-password" aria-selected="false">Password & Security</button><br>
+                                    <button style="background:#00ADB5;color:white" class="nav-link" id="v-pills-payments-tab" data-bs-toggle="pill" data-bs-target="#v-pills-payments" type="button" role="tab" aria-controls="v-pills-payments" aria-selected="false">Payment & Transactions</button><br>
                                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                 </div>
                                 <div class="tab-content" id="v-pills-tabContent">
                                     <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel" aria-labelledby="v-pills-general-tab" tabindex="0">
-                                        <h4>GENERAL SETTINGS</h4>
-                                        <h6 class="card-subtitle mb-2 text-muted">Manage the account details you've shared with BruhForce including your name, contact info and more</h6><br>
-                                        <h4>ACCOUNT INFO</h4>
-                                        <h6 class="card-subtitle mb-2 text-muted"><span style="color:black;">ID:</span> <?php echo $_SESSION['userid'];?></h6><br>
+                                        <h4 style="color:white;">GENERAL SETTINGS</h4>
+                                        <h6 style="color:white;" class="card-subtitle mb-2 text-muted">Manage the account details you've shared with BruhForce including your name, contact info and more</h6><br>
+                                        <h4 style="color:white;">ACCOUNT INFO</h4>
+                                        <h6 style="color:white;"class="card-subtitle mb-2 text-muted"><span style="color:white;">ID:</span> <?php echo $_SESSION['userid'];?></h6><br>
                                         
                                             <div class="row">
                                                 <div class="col">
@@ -134,7 +134,7 @@ if(isset($_POST["deleteAccount"])){
                                                             <input class="form-control" name="username" type="text" placeholder="Username" value="<?php echo $_SESSION['username']?>" required>
                                                         </div>
                                                         <div class="col-3">
-                                                            <button type="submit" name="changeUsername" class="btn btn-primary h-100 w-100"><i class="fa-solid fa-pen"></i></button>
+                                                            <button style="background:#00ADB5;border-color:#00ADB5" type="submit" name="changeUsername" class="btn btn-primary h-100 w-100"><i class="fa-solid fa-pen"></i></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -148,14 +148,14 @@ if(isset($_POST["deleteAccount"])){
                                                             <input class="form-control" name="email" type="text" placeholder="Email" value="<?php echo $_SESSION['email']?>" required>
                                                         </div>
                                                         <div class="col-3">
-                                                            <button type="submit" name="changeEmail" class="btn btn-primary h-100 w-100"><i class="fa-solid fa-pen"></i></button>
+                                                            <button style="background:#00ADB5;border-color:#00ADB5" type="submit" name="changeEmail" class="btn btn-primary h-100 w-100"><i class="fa-solid fa-pen"></i></button>
                                                         </div>
                                                     </div>
                                                     </form>
                                                 </div>
                                             </div><hr>
-                                        <h4>ADDRESS</h4>
-                                        <h6 class="card-subtitle mb-2 text-muted">You Can Have Upto Maximum Of 5 Addresses</h6><br>
+                                        <h4 style="color:white;">ADDRESS</h4>
+                                        <h6 style="color:white;" class="card-subtitle mb-2 text-muted">You Can Have Upto Maximum Of 5 Addresses</h6><br>
                                         <ol class="list-group <?php if($addressCount > 0){?>list-group-numbered<?php }?>">
                                             <?php 
                                                 if($addressCount <= 0){
@@ -163,11 +163,11 @@ if(isset($_POST["deleteAccount"])){
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                                 <div class="ms-2 me-auto">
                                                 <div class="fw-bold">You Haven't Added Your Address Yet!</div>
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAddress">
+                                                <button style="background:#00ADB5;border-color:#00ADB5" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAddress">
                                                 Add Now
                                                 </button>
                                                 </div>
-                                                <span class="badge bg-warning rounded-pill">!</span>
+                                                <span style="background:#00ADB5" class="badge rounded-pill">!</span>
                                             </li>
                                             <?php 
                                                 }else{
@@ -310,14 +310,14 @@ if(isset($_POST["deleteAccount"])){
                                             </div>
                                         </div>
                                         <hr>
-                                        <h4>DELETE ACCOUNT</h4>
+                                        <h4 style="color:white;">DELETE ACCOUNT</h4>
                                         <div class="row">
                                             <div class="col-7">
-                                                <h6 class="card-subtitle mb-2 text-muted">Click <code>REQUEST ACCOUNT DELETE</code> to start the process of permanently deleting your BruhForce account including all personal information, purchases.</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted">Click <code style="color:#00ADB5">REQUEST ACCOUNT DELETE</code> to start the process of permanently deleting your BruhForce account including all personal information, purchases.</h6>
                                             </div>
                                             <div class="col-5">
                                             <form method="POST">
-                                                <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteAccount">REQUEST DELETE ACCOUNT</button>
+                                                <button style="background:#00ADB5;border-color:#00ADB5" type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteAccount">REQUEST DELETE ACCOUNT</button>
                                             </form>
                                             </div>
                                         </div>
