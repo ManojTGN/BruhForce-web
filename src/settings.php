@@ -207,7 +207,7 @@ if(isset($_POST["deleteAccount"])){
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
-                                                                <button type="submit" class="btn btn-primary" name="editAddress">Edit</button>
+                                                                <button style="background-color:#00ADB5;" type="submit" class="btn" name="editAddress">Edit</button>
                                                             </div>
                                                         </form> 
                                                         </div>
@@ -261,14 +261,14 @@ if(isset($_POST["deleteAccount"])){
                                                         </div>
                                                     </div>
                                                     <div class="col-4">
-                                                        <button type="submit" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#editAddress<?php echo $index;?>">Edit </button><p></p>
-                                                        <button type="submit" class="btn btn-danger w-100"  data-bs-toggle="modal" data-bs-target="#deleteAddress<?php echo $index;?>">Delete </button>
+                                                        <button type="submit" class="btn w-100" style="background:#00ADB5" data-bs-toggle="modal" data-bs-target="#editAddress<?php echo $index;?>">Edit </button><p></p>
+                                                        <button type="submit" class="btn w-100" style="background:#00ADB5" data-bs-toggle="modal" data-bs-target="#deleteAddress<?php echo $index;?>">Delete </button>
                                                     </div>
                                                 </li>
                                             <?php $index++;}}?>
                                         </ol><br>
                                         <?php if($addressCount >=1){?>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAddress" <?php if($addressCount ==5){echo ' data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Maximum Address Reached [5]" disabled';}?>>
+                                        <button style="background:#00ADB5;" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#addAddress" <?php if($addressCount ==5){echo ' data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Maximum Address Reached [5]" disabled';}?>>
                                             Add New Address
                                         </button>
                                         <?php }?>
@@ -351,17 +351,17 @@ if(isset($_POST["deleteAccount"])){
                                     <form method="POST">
                                     <div class="row">
                                         <div class="col">
-                                            <h6 class="card-subtitle mb-2 text-muted"><b style="color:black;">CURRENT PASSWORD</b> required*</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted"><b style="color:white;">CURRENT PASSWORD</b> required*</h6>
                                             <input type="password" placeholder="current password" name="currentPassword" class="form-control" required><br><br>
 
-                                            <h6 class="card-subtitle mb-2 text-muted"><b style="color:black;">NEW PASSWORD</b> required*</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted"><b style="color:white;">NEW PASSWORD</b> required*</h6>
                                             <input type="password" placeholder="new password" name="newPassword" class="form-control" required><br><br>
 
-                                            <h6 class="card-subtitle mb-2 text-muted"><b style="color:black;">RETYPE NEW PASSWORD</b> required*</h6>
+                                            <h6 class="card-subtitle mb-2 text-muted"><b style="color:white;">RETYPE NEW PASSWORD</b> required*</h6>
                                             <input type="password" placeholder="retype new password" name="confirmedPassword" class="form-control" required><br><br>
                                         </div>
                                         <div class="col">
-                                        <h6 class="card-subtitle mb-2 text-muted"><b style="color:black;">YOUR PASSWORD</b></h6>
+                                        <h6 class="card-subtitle mb-2 text-muted"><b style="color:white;">YOUR PASSWORD</b></h6>
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted">Your password must have 7+ characters</h6></li>
                                             <li class="list-group-item"><h6 class="card-subtitle mb-2 text-muted">Your password must have at least 1 number</h6></li>
@@ -369,24 +369,24 @@ if(isset($_POST["deleteAccount"])){
                                         </ul>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" name="changePassword">Save Changes</button>
+                                    <button style="background:#00ADB5" type="submit" class="btn" name="changePassword">Save Changes</button>
                                     </form><br><hr>
-                                    <h4>SIGNOUT EVERYWHERE</h4>
+                                    <h4 style="color:white;">SIGNOUT EVERYWHERE</h4>
                                     <div class="row">
                                         <div class="col"><h6 class="card-subtitle mb-2 text-muted">Sign out everywhere else your BruhForce account is being used, including all other browsers, phones, or any other devices</h6></div>
-                                        <div class="col"><button type="submit" class="btn btn-primary">Sign Out Other Session</button></div>
+                                        <div class="col"><button style="background:#00ADB5" type="submit" class="btn">Sign Out Other Session</button></div>
                                     </div>
                                     </div>
                                     <div class="tab-pane fade" id="v-pills-payments" role="tabpanel" aria-labelledby="v-pills-payments-tab" tabindex="0">
-                                        <h4>PAYMENT MANAGEMENT</h4>
+                                        <h4 style="color:white;">PAYMENT MANAGEMENT</h4>
                                         <h6 class="card-subtitle mb-2 text-muted">View your payment activity and the payment made in your BruhForce Account! Note That The transactions are only available after 6 hours.</h6><br>
-                                        <h6 class="card-subtitle mb-2 text-muted"><b style="color:black;">YOUR PAYMENT METHODS</b></h6>
+                                        <h6 class="card-subtitle mb-2 text-muted"><b style="color:white;">YOUR PAYMENT METHODS</b></h6>
                                         <h6 class="card-subtitle mb-2 text-muted">Add or manage payment methods associated with your BruhForce Account.</h6>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPayment">
+                                        <button style="background-color:#00ADB5;" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#addPayment">
                                         Add Payment Method
                                         </button>
                                         <hr>
-                                        <h4>TRANSACTIONS</h4>
+                                        <h4 style="color:white;">TRANSACTIONS</h4>
                                         <div class="modal fade" id="addPayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addPaymentLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -423,7 +423,7 @@ if(isset($_POST["deleteAccount"])){
                                                             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                                             <div class="accordion-body">
                                                                 <h6 class="card-subtitle mb-2 text-muted">You will be directed to PayPal to authorize your payment method, then you will be returned to BruhForce to complete this purchase.</h6>
-                                                                <button type="submit" class="btn btn-primary">Save</button>
+                                                                <button style="background:00ADB5" type="submit" class="btn">Save</button>
                                                             </div>
                                                             </div>
                                                         </div>

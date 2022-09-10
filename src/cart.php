@@ -57,13 +57,13 @@ if(isset($_POST["removeItem"])){
         <script src="https://kit.fontawesome.com/08c3f952c9.js" crossorigin="anonymous"></script>
     </head>
 
-    <body>
+    <body style="background:#00ADB5">
         <?php include("header.php");?>
         <div class="container-fluid">
 
-        <div class="card mx-auto" style="width:50%;margin-top:20px;">
+        <div class="card mx-auto" style="width:50%;margin-top:20px;background:#393E46;">
             <div class="card-body">
-                <h5 class="card-title">Your Cart</h5><hr>
+                <h5 style="color:white"class="card-title">Your Cart</h5><hr>
                 <div class="row">
                     <div class="col-8">
                         <?php 
@@ -125,10 +125,10 @@ if(isset($_POST["removeItem"])){
                         <div class="row">
                             <div class="col-8">
                                 <div class="row">
-                                    <div class="col"><h5 class="card-subtitle mb-2">Dish</h5></div>
-                                    <div class="col"><h5 class="card-subtitle mb-2">Quantity</h5></div>
+                                    <div class="col"><h5 style="color:white;" class="card-subtitle mb-2">Dish</h5></div>
+                                    <div class="col"><h5 style="color:white;"class="card-subtitle mb-2">Quantity</h5></div>
                                 </div>
-                                <div style="width:100%;border:1px solid black;border-style:dashed;"></div><br>
+                                <div style="width:100%;border:1px solid white;border-style:dashed;"></div><br>
                                 <?php 
                                     if($CartCount <= 0){
                                 ?>
@@ -152,8 +152,8 @@ if(isset($_POST["removeItem"])){
                                 <?php }?>
                             </div>
                             <div class="col-4" style="text-align:right;">
-                                <h5 class="card-subtitle mb-2">Price</h5>
-                                <div style="width:100%;border:1px solid black;border-style:dashed;"></div><br>
+                                <h5 style="color:white;"class="card-subtitle mb-2">Price</h5>
+                                <div style="width:100%;border:1px solid white;border-style:dashed;"></div><br>
                                 <?php 
                                     if($CartCount <= 0){
                                 ?>
@@ -170,10 +170,10 @@ if(isset($_POST["removeItem"])){
                                 <?php }?>
                             </div>
                         </div><div style="margin-top:20px;"></div>
-                        <div style="width:100%;border:1px solid black;border-style:dashed;"></div><br>
+                        <div style="width:100%;border:1px solid white;border-style:dashed;"></div><br>
                         <div class="row">
                             <div class="col-8">
-                                <h6 class="card-subtitle mb-2">Total:</h6>
+                                <h6 style="color:white;"class="card-subtitle mb-2">Total:</h6>
                             </div>
                             <div class="col-4" style="text-align:right;">
                                 <h6 class="card-subtitle mb-2"><?php echo $total_price;?></h6>
@@ -186,7 +186,7 @@ if(isset($_POST["removeItem"])){
                                 else{ $cartid = -1;}
                             ?>
                             <input value="<?php echo $cartid?>" name="cartid" style="visibility:hidden;"/>
-                            <button class="btn btn-primary w-100" name="proceed" <?php if($CartCount <= 0){ echo "disabled"; }?>>Proceed</button>
+                            <button style="background-color:#00ADB5;border-color:#00ADB5;color:white;" class="btn btn-primary w-100" name="proceed" <?php if($CartCount <= 0){ echo "disabled"; }?>>Proceed</button>
                         </form>
                     </div>
                 </div>
