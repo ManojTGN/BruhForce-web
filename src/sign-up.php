@@ -57,6 +57,7 @@ if(isset($_POST["createUser"])){
                 <br>
                 <div style="text-align: left;" style="width: 200px;">
                     <button type="submit" name="createUser" class="btn btn-primary">Sign up</button>
+                    <a href="sign-in.php"><button type="button" class="btn btn-link">Sign In</button></a>
                 </div>
                 </form>    
             

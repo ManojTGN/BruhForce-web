@@ -70,9 +70,9 @@ if(isset($_POST["removeItem"])){
                             if($CartCount <= 0){
                         ?>
                         <br><br>
-                        <div class="mx-auto" style="width:50%;">
+                        <div class="mx-auto text-center" style="width:50%;">
                             <i class="fa-solid fa-cart-shopping text-muted" style="font-size:70px;"></i><br><br>
-                            <h6 class="card-subtitle mb-2 text-muted">Your Cart Is Empty</h6>
+                            <h3 class="card-subtitle mb-2 text-muted">Your Haven't Added Anything Yet</h3>
                         </div>
                         <?php 
                             }else{
