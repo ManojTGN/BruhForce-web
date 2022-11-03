@@ -24,7 +24,7 @@ if(isset($_POST['login'])){
             $_SESSION['email']=$row['EMAIL'];
             $_SESSION['phonenumber']=$row['PHONE NUMBER'];
             $_SESSION['signed-in'] = true;
-            header("Location: dashboard.php");
+            header("Location: index.php");
         }
     
     }
@@ -35,55 +35,37 @@ if(isset($_POST['login'])){
 
 ?>
 
+<!DOCTYPE html>
 <html>
     <head>
-        <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     </head>
-    <body>
-        <div style="background-color: #393E46;height:100%;"class="container-fluid">
-            
-        </div>
-        <div class="container-fluid" style="position:absolute;top:0;left:0;">               
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-8">
-                    <div class="container text-center">
-                        <div class="row">
-                          <div class="col">
-                            
-                           
-                          </div>
-                          <div class="col">
-                            <div class="d-flex align-items-end flex-column mb-3" style="height: 200px;">
-                                <div class="mt-autop-2" style="background-color: 393E46;">
-                                    <div class="w-50 p-3" style="height: 250px;"></div>
-                                    <form method="POST">
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping" style="background-color: 00ADB5;">Username</span>
-                                        <input name="email" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <br>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping" style="background-color: 00ADB5;">password</span>
-                                        <input name="password" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div style="text-align: left;">
-                                        <button type="submit" name="login" class="btn btn-primary" style="margin-right: 20px; background-color:00ADB5; border-color:00ADB5;color: black;">Sign in</button>
-                                        <button type="submit" class="btn btn-primary" style= "background-color:00ADB5; border-color:00ADB5;color: black;">Sign up</button>
-                                    </div>
-                                    </form>    
-                                </div>
-                            </div>
-                          </div>
-                          <div class="col">
-                            
-                          </div>
-                        </div>
-                      </div>
+    <body style="background:#00ADB5">
+
+        <div style="background:#00ADB5"class="container-fluid">           
+            <form method="POST">
+            <div class="card mx-auto" style="width: 30%;margin-top:15%;background:#393E46;">
+                <div class="card-body">
+                <h5 style="color:white;"class="card-title">Sign In</h5><br>
+                    <div class="input-group flex-nowrap">
+                        <span style="background:#393E46;color:white;"class="input-group-text" id="addon-wrapping">Username</span>
+                        <input name="email" value="medhunraj1307@gmail.com" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+                    <div class="input-group flex-nowrap">
+                        <span style="background:#393E46;color:white;"class="input-group-text" id="addon-wrapping">password</span>
+                        <input name="password" value="123456" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="addon-wrapping">
+                    </div>
+                    <br>
+                    <br>
+                    <div style="text-align: left;">
+                        <button style="background:#00ADB5;border-color:#00ADB5" type="submit" name="login" class="btn btn-primary" >Sign in</button>
+                        <a href="sign-up.php"><button style="color:#00ADB5;"type="button" class="btn btn-link">Sign up</button></a>
+                    </div>
+                </div>
             </div>
-        </div>
+            
+            </form>   
+        </div> 
     </body>
 </html>
