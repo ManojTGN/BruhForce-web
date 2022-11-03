@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
         }
     
     }
-
+ 
     //Setting The Failed Alert To 1b.
     $alert_wrong = true;
 }
